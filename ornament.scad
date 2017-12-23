@@ -3,21 +3,22 @@ in=25.4*mm;
 
 phi = (1 + sqrt(5))/2;  // golden ratio, it comes up
 
+slop=0.15;
 
-face_size=11*mm;
-vertex_size=15*mm;
+face_size=(10*mm+slop)/2;
+vertex_size=(15*mm+slop)/2;
 
 edge_midpoint_unnormalized = ([phi,1,0] + [0,phi,1])/2;
 edge_midpoint = edge_midpoint_unnormalized / norm(edge_midpoint_unnormalized);
 edge_midpoint_x_rot = acos(edge_midpoint[2]);
 edge_midpoint_z_rot = atan2(edge_midpoint[0], edge_midpoint[1]);
 
-edge_midpoint_size = 8*mm;
+edge_midpoint_size = 8*mm/2;
 
-rad_to_eyes = 55*mm;
-sphere_rad = 58*mm;
+rad_to_eyes = 24.5*mm;
+sphere_rad = rad_to_eyes+2*mm;
 drill_height = 2*(sphere_rad-rad_to_eyes);
-print_offset = -41*mm;
+print_offset = -0.72*sphere_rad;
 
 // the circle that's cut out of the icosihedron faces
 module face_circle() {
